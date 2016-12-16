@@ -1,0 +1,384 @@
+body {
+  color: $color-2;
+  font-size: $size-12;
+  font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Tahoma, Verdana, arial, sans-serif;
+  background: $color-7;
+}//body
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $color-2;
+  text-decoration: none;
+  cursor: pointer;
+}//a
+
+%clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}//clearfix
+
+*::selection {
+  color: $color;
+  background: $color-5;
+}
+
+*::-moz-selection {
+  color: $color;
+  background: $color-5;
+}
+
+
+
+::-webkit-input-placeholder {
+  color: $color-4;
+  font-weight: normal;
+}
+
+:-moz-placeholder {
+  color: $color-4;
+  font-weight: normal;
+}
+
+::-moz-placeholder {
+  color: $color-4;
+  font-weight: normal;
+}
+
+:-ms-input-placeholder {
+  color: $color-4;
+  font-weight: normal;
+}
+
+
+
+select, textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// input[type="radio"], input[type="checkbox"] {
+// 	opacity: 0;
+// }
+
+
+
+@mixin retina {
+  @media only screen and (min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-moz-device-pixel-ratio: 2),
+  only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    @content;
+  }//@media
+}//@mixin retina
+
+.border-bottom, .border-top {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+    background: $color-8;
+    @include retina {
+      & {
+        bottom: -1px;
+        transform: scaley(.5);
+        transform-origin: 0 0;
+      }
+    }//retina
+  }
+
+  @at-root .border.hover:hover &:after {
+    background: $color-5;
+  }
+
+}//.border-bottom
+
+.border-top {
+  &:after {
+    top: 0;
+  }
+}//.border-top
+
+.border, .border-rbl, .border-b, .border-t {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $color-8;
+    pointer-events: none;
+    transition: all .3s linear 0s;
+    @include retina {
+      & {
+        width: 200%;
+        height: 200%;
+        transform: scale(.5);
+        transform-origin: 0 0;
+      }
+    }//retina
+  }
+
+  &.hover:hover:after{
+    border-color: $color-5;
+    transition: all .3s linear 0s;
+  }
+
+  // 支付选择 选中支付方式
+  &.hover-red:hover:after, &.current:after {
+    border-color: $color-5;
+    transition: all .3s linear 0s;
+  }
+}//.border
+
+// 右 下 左 边线 无上边线
+.border-rbl {
+  &:after {
+    border-top: none;
+  }
+}//.border-rbl
+
+// 上 边线 其它三面 都无边线
+.border-t {
+  &:after {
+    border: none;
+    border-top-width: 1px;
+    border-top-color: $color-8;
+  }
+
+  &.dashed {
+    &:after {
+      border-top-style: dashed;
+    }
+  }//.dashed
+
+  &.dotted {
+    &:after {
+      border-top-style: dotted;
+    }
+  }//.dotted
+}//.border-t
+
+// 下 边线 其它三面 都无边线
+.border-b {
+  &:after {
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-color: $color-8;
+  }
+
+  &.dashed {
+    &:after {
+      border-bottom-style: dashed;
+    }
+  }//.dashed
+
+  &.dotted {
+    &:after {
+      border-bottom-style: dotted;
+    }
+  }//.dotted
+}//.border-b
+
+// 圆角
+.border-r3 {
+  &:after {
+    border-radius: 3px;
+    @include retina {
+      & {
+        border-radius: 3px * 2;
+      }
+    }
+  }
+}//.border-r3
+
+.border-right {
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    display: block;
+    width: 1px;
+    height: 100%;
+    overflow: hidden;
+    background: $color-8;
+    @include retina {
+      & {
+        right: -1px;
+        transform: scalex(.5);
+        transform-origin: 0 0;
+      }
+    }//retina
+  }
+}//.border-right
+
+
+// 状态条
+@mixin status-bar($selection-name: status, $margin-bottom: 60px, $count: 4, $first-last-child-gap: 5px) {
+  // 状态
+  .#{$selection-name} {
+    $width: 1000px;
+    $height: 32px;
+
+    margin: 0 auto $margin-bottom;
+    width: $width;
+    height: $height;
+    font-size: 0;
+    text-align: center;
+    border-radius: 3px;
+
+    li {
+      position: relative;
+      display: inline-block;
+      width: floor($width / $count) - 15px * 2;
+      height: $height;
+      font-size: $size-12;
+      line-height: $height;
+      background: $color-7;
+      margin: 0 15px 0 8px;
+
+      em {
+        position: absolute;
+        display: block;
+        width: 15px;
+        height: $height;
+        background-size: 15px 40px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.arrow-left {
+          left: -15px;
+          top: 0;
+          background-image: url(#{$img}/status/right_grey2.png);
+          @include retina {
+            & {
+              background-image: url(#{$img}/status/right_grey2@2x.png)
+            }
+          }
+        }
+        &.arrow-right {
+          right: -15px;
+          top: 0;
+          background-image: url(#{$img}/status/right_grey.png);
+          @include retina {
+            & {
+              background-image: url(#{$img}/status/right_grey@2x.png)
+            }
+          }
+        }
+      }//em
+
+      &:first-child {
+        // width: floor($width / $count) - 5px;
+        width: floor($width / $count) - $first-last-child-gap;
+        margin-left: 0;
+        border-radius: $height / 2 0 0 $height / 2;
+        em {
+          &.arrow-left {
+            background: none !important;
+          }
+        }
+      }
+      &:last-child {
+        // width: floor($width / $count) - 5px;
+        width: floor($width / $count) - $first-last-child-gap;
+        margin-right: 0;
+        border-radius: 0 $height / 2 $height / 2 0;
+        em {
+          &.arrow-right {
+            background: none !important;
+          }
+        }
+      }
+
+      span {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        color: $color;
+        line-height: 18px;
+        text-align: center;
+        background: $color-4;
+        border-radius: 50%;
+      }//span
+      strong {
+        padding-left: $gap-2;
+        font-size: $size-14;
+      }//strong
+
+      &.current {
+        background: $color-5;
+        span {
+          color: $color-5;
+          background: $color;
+        }//span
+        strong {
+          color: $color;
+        }//strong
+        em {
+          &.arrow-left {
+            background-image: url(#{$img}/status/right_blue2.png);
+            @include retina {
+              & {
+                background-image: url(#{$img}/status/right_blue2@2x.png)
+              }
+            }
+          }
+          &.arrow-right {
+            background-image: url(#{$img}/status/right_blue.png);
+            @include retina {
+              & {
+                background-image: url(#{$img}/status/right_blue@2x.png)
+              }
+            }
+          }
+        }//em
+      }//.current
+    }//li
+  }//ul.status
+}//status-bar
+
+
+
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}//ellipsis
+
+// .shortcut-tab 使用
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}//.fixed
+
+

@@ -1,0 +1,67 @@
+
+//// 变量
+//// $public: '/Public/Index';	// 资源目录
+//$public: '/Public/Home';	// 资源目录
+//$img: $public + '/img';		// 图像资源
+//$svg: $public + '/svg';		// svg矢量图片资源
+
+
+
+//
+$width: 1200px;			// 宽度
+
+$header-height: 60px; 	// header 头部导航高度
+$footer-height: 218px;	// footer 页尾高度
+
+$gap-1: 8px;
+$gap-2: 16px;
+$gap-3: 24px;
+$gap-4: 32px;
+$gap-5: 40px;
+$gap-6: 48px;
+$gap-7: 56px;
+$gap-8: 64px;
+$gap-9: 72px;
+
+
+// 颜色
+$color: #ffffff;
+//$color-0: transparent;
+$color-00: #000000;
+
+$color-1: #333333;	// 标题
+$color-2: #666666;	// 正文
+$color-3: #999999;	// 标注
+$color-4: #cccccc; 	// 占位符文字 不可用
+
+$color-5: #1f9f8f;	// 主色 绿色
+$color-6: #ed5444;	// 红色 D级
+$color-7: #f1f1f1;	// 背景色 禁用灰
+$color-8: #e5e5e5;	// 普通 边框线
+$color-9: #283443;	// footer 背景色
+$color-10: #63768e;	// footer 文字颜色
+
+// 等级颜色
+$color-11: #76c043;	// A级
+$color-12: #ffc400; // B级
+$color-13: #fb5a00;	// C级
+$color-14: #f8f8f8;	// 搜索 结果列表页 表头 背景色
+
+
+
+// 字体尺寸
+$size-12: 12px;
+$size-14: 14px;
+$size-16: 16px;
+$size-18: 18px;
+$size-20: 20px;
+$size-22: 22px;
+$size-24: 24px;
+$size-26: 26px;
+$size-28: 28px;
+$size-30: 30px;
+$size-36: 36px;
+$size-42: 42px;
+$size-48: 48px;
+
+
